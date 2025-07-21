@@ -25,11 +25,19 @@ export const Layout = () => {
                                 <div className="flex flex-1 flex-col justify-center items-center py-5">
                                     <img src={logo} alt="Logo" className="h-auto my-5 pt-5 max-w-[70%]" />
 
-                                    <p className="mt-5 text-white text-center px-4">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas corporis voluptatem
-                                        laboriosam, praesentium nobis est? Voluptas molestias necessitatibus, hic dolor
-                                        odio magnam iure blanditiis perferendis voluptatibus laboriosam magni, beatae minus!
-                                    </p>
+                                    <div className=" bg-[#f4f5f7] bg-opacity-95 p-3 rounded">
+                                        <h1 className="text-4xl md:text-5xl font-extrabold leading-tight">
+                                            Todas tus{" "}
+                                            <span className="text-cyan-400">Redes Sociales</span>{" "}
+                                            en un enlace
+                                        </h1>
+
+                                        <p className="mt-6 text-gray-700 text-lg">
+                                            Únete a más de 200 mil developers compartiendo sus redes sociales,
+                                            comparte tu perfil de TikTok, Facebook, Instagram, YouTube, Github y más
+                                        </p>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
