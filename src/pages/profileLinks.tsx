@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import { AddSocialLinkModal } from "../components/addSocialLinkModal";
 import { GetSocialLinksAsync } from "../helper/api-link";
 import { DataContext } from "../context/ContextAppDevTree";
 import { SolialLink } from "../context/types";
@@ -30,7 +29,6 @@ export const ProfileLinks = () => {
 
   const [value, setvalue] = useState<ValueSolial[]>([])
 
-  const [open, setOpen] = useState(false);
 
   const handleToggle = (index: number) => {
     value[index].habilitado = !value[index].habilitado;

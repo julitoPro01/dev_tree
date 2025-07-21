@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { GetProfileAsync } from "../helper/api-link";
 import { useParams } from "react-router-dom";
 import { icons } from './profileLinks';
