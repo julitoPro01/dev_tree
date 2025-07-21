@@ -3,6 +3,7 @@ import { useForm } from "../hooks/useForm";
 import { fieldName, usevalidateField } from "../hooks/useValidateField";
 import { toastResponseRegister } from "../helper/api-toast-response";
 import { DataContext } from "../context/ContextAppDevTree";
+import { UserAsync } from "../helper/api-user";
 
 const msg = fieldName;
 
@@ -15,7 +16,8 @@ const fieldError = {
 }
 
 export const Register = () => {
-  const { dispatchLogin } = useContext(DataContext);
+  const { dispatchLogin,dispatchGetUser, dispatchLoading  } = useContext(DataContext);
+
 
   const { handleChange, value, handleClean } = useForm({ email: "", password: "", lastName: "", name: "", password1: "" });
   const { handleInput, field, isActive, isValidField, handleReset, handleComparePassword } = usevalidateField(fieldError);
@@ -25,13 +27,24 @@ export const Register = () => {
     e.preventDefault();
 
     if (!isValidField()) return;
-        console.log("register")
+    console.log("register")
 
     await toastResponseRegister({ email, password, lastName, name }, (action: boolean) => {
       if (action) {
         handleClean()
         handleReset()
         dispatchLogin()
+        const token = localStorage.getItem("token") ?? "";
+
+        UserAsync(token!).then(user => {
+
+          dispatchGetUser(user.data)
+          dispatchLoading();
+
+        }).catch(e => {
+          console.log(e)
+          dispatchLoading();
+        })
       }
     })
   }
@@ -122,7 +135,7 @@ export const Register = () => {
             onChange={(e) => {
               handleChange(e);
               handleInput(e);
-              handleComparePassword(e,password);
+              handleComparePassword(e, password);
             }}
 
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
