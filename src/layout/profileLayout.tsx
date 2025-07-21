@@ -46,7 +46,7 @@ export const ProfileLayout = () => {
                                 return isPending ? (style + "text-gray-600") : isActive ? (style + "text-blue-600 border-b-2") : style
                             }}
                         >
-                            Mi Perfile
+                            Mi Perfil
                         </NavLink>
 
                         <NavLink
